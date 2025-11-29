@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Website FAQ Maker
- * Plugin URI:  https://example.com/website-faq-maker
+ * Plugin URI:  https://dnnengineer.com/website-faq-maker
  * Description: Generates FAQs from your content using AI (OpenAI or Gemini) and displays them via shortcode.
  * Version:     1.1.0
  * Author:      Saad
- * Author URI:  https://example.com
+ * Author URI:  https://dnnengineer.com
  * Text Domain: website-faq-maker
  * Domain Path: /languages
  * License:     GPL-2.0+

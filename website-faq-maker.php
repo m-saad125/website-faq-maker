@@ -30,7 +30,7 @@ require_once WFM_PLUGIN_DIR . 'includes/plugin-update-checker/plugin-update-chec
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://github.com/user/repo-name', // TODO: User must update this URL
+	'https://github.com/m-saad125/website-faq-maker', // TODO: User must update this URL
 	__FILE__,
 	'website-faq-maker'
 );

@@ -1,0 +1,31 @@
+.wfm-tab-content {
+    display: none;
+    padding-top: 20px;
+}
+
+.wfm-api-key-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+}
+
+.wfm-api-key-wrapper input {
+    width: 100%;
+    padding-right: 30px;
+    /* Space for icon */
+}
+
+.wfm-eye-icon {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    z-index: 10;
+}
+
+.wfm-eye-icon:hover {
+    color: #0073aa;
+}

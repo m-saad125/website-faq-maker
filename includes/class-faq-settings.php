@@ -43,7 +43,9 @@ class WFM_FAQ_Settings {
 	public function register_settings() {
 		// API Settings Section
 		register_setting( 'wfm_settings_group', 'wfm_openai_api_key', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+		register_setting( 'wfm_settings_group', 'wfm_openai_model', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 		register_setting( 'wfm_settings_group', 'wfm_gemini_api_key', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+		register_setting( 'wfm_settings_group', 'wfm_gemini_model', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 		register_setting( 'wfm_settings_group', 'wfm_active_provider', array( 'sanitize_callback' => 'sanitize_text_field' ) );
 
 		// Styling Settings Section
@@ -84,9 +86,25 @@ class WFM_FAQ_Settings {
 		);
 
 		add_settings_field(
+			'wfm_openai_model',
+			__( 'OpenAI Model', 'website-faq-maker' ),
+			array( $this, 'render_openai_model_field' ),
+			'wfm-settings',
+			'wfm_api_section'
+		);
+
+		add_settings_field(
 			'wfm_gemini_api_key',
 			__( 'Gemini API Key', 'website-faq-maker' ),
 			array( $this, 'render_gemini_api_key_field' ),
+			'wfm-settings',
+			'wfm_api_section'
+		);
+
+		add_settings_field(
+			'wfm_gemini_model',
+			__( 'Gemini Model', 'website-faq-maker' ),
+			array( $this, 'render_gemini_model_field' ),
 			'wfm-settings',
 			'wfm_api_section'
 		);
@@ -167,11 +185,40 @@ class WFM_FAQ_Settings {
 	}
 
 	/**
+	 * Render OpenAI Model Field.
+	 */
+	public function render_openai_model_field() {
+		$value = get_option( 'wfm_openai_model', 'gpt-3.5-turbo' );
+		?>
+		<select name="wfm_openai_model">
+			<option value="gpt-3.5-turbo" <?php selected( $value, 'gpt-3.5-turbo' ); ?>>GPT-3.5 Turbo</option>
+			<option value="gpt-4" <?php selected( $value, 'gpt-4' ); ?>>GPT-4</option>
+			<option value="gpt-4-turbo" <?php selected( $value, 'gpt-4-turbo' ); ?>>GPT-4 Turbo</option>
+			<option value="gpt-4o" <?php selected( $value, 'gpt-4o' ); ?>>GPT-4o</option>
+		</select>
+		<?php
+	}
+
+	/**
 	 * Render Gemini API Key Field.
 	 */
 	public function render_gemini_api_key_field() {
 		$value = get_option( 'wfm_gemini_api_key' );
 		echo '<input type="password" name="wfm_gemini_api_key" value="' . esc_attr( $value ) . '" class="regular-text">';
+	}
+
+	/**
+	 * Render Gemini Model Field.
+	 */
+	public function render_gemini_model_field() {
+		$value = get_option( 'wfm_gemini_model', 'gemini-pro' );
+		?>
+		<select name="wfm_gemini_model">
+			<option value="gemini-pro" <?php selected( $value, 'gemini-pro' ); ?>>Gemini Pro</option>
+			<option value="gemini-1.5-flash" <?php selected( $value, 'gemini-1.5-flash' ); ?>>Gemini 1.5 Flash</option>
+			<option value="gemini-1.5-pro" <?php selected( $value, 'gemini-1.5-pro' ); ?>>Gemini 1.5 Pro</option>
+		</select>
+		<?php
 	}
 
 	/**

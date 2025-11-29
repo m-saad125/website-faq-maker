@@ -3,7 +3,7 @@
  * Plugin Name: Website FAQ Maker
  * Plugin URI:  https://example.com/website-faq-maker
  * Description: Generates FAQs from your content using AI (OpenAI or Gemini) and displays them via shortcode.
- * Version:     1.0.0
+ * Version:     1.1.0
  * Author:      Saad
  * Author URI:  https://example.com
  * Text Domain: website-faq-maker
@@ -17,13 +17,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants.
-define( 'WFM_VERSION', '1.0.0' );
+define( 'WFM_VERSION', '1.1.0' );
 define( 'WFM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WFM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WFM_PLUGIN_FILE', __FILE__ );
 
 // Include the main plugin class.
 require_once WFM_PLUGIN_DIR . 'includes/class-faq-plugin.php';
+
+// Initialize Plugin Update Checker.
+require_once WFM_PLUGIN_DIR . 'includes/plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/user/repo-name', // TODO: User must update this URL
+	__FILE__,
+	'website-faq-maker'
+);
+
+// Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('main');
 
 /**
  * Main instance of Website FAQ Maker.

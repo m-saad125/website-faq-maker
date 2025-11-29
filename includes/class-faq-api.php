@@ -54,8 +54,10 @@ class WFM_FAQ_API {
 			$content
 		);
 
+		$model = get_option( 'wfm_openai_model', 'gpt-3.5-turbo' );
+
 		$body = array(
-			'model'       => 'gpt-3.5-turbo', // Or gpt-4 if preferred/available
+			'model'       => $model,
 			'messages'    => array(
 				array(
 					'role'    => 'system',
@@ -118,7 +120,9 @@ class WFM_FAQ_API {
 			return new WP_Error( 'missing_api_key', __( 'Gemini API Key is missing.', 'website-faq-maker' ) );
 		}
 
-		$url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' . $api_key;
+		$model = get_option( 'wfm_gemini_model', 'gemini-pro' );
+		
+		$url = 'https://generativelanguage.googleapis.com/v1beta/models/' . $model . ':generateContent?key=' . $api_key;
 
 		$prompt = sprintf(
 			'Generate %d FAQs (questions and answers) based on the following content. Return the result as a JSON array of objects, where each object has "question" and "answer" keys. Do not include any markdown formatting or extra text, just the raw JSON array. Content: %s',

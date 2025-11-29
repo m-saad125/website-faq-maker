@@ -26,7 +26,7 @@ define( 'WFM_PLUGIN_FILE', __FILE__ );
 require_once WFM_PLUGIN_DIR . 'includes/class-faq-plugin.php';
 
 // Initialize Plugin Update Checker.
-require_once WFM_PLUGIN_DIR . 'includes/plugin-update-checker/plugin-update-checker.php';
+require_once WFM_PLUGIN_DIR . 'plugin-update-checker/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(

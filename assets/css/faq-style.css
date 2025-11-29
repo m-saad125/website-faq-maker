@@ -1,0 +1,63 @@
+.wfm-faq-accordion {
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.wfm-accordion-item {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.wfm-accordion-item:last-child {
+    border-bottom: none;
+}
+
+.wfm-accordion-item button {
+    width: 100%;
+    text-align: left;
+    padding: 15px 20px;
+    background: none;
+    border: none;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.wfm-accordion-item button:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: -2px;
+}
+
+.wfm-accordion-icon {
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+    margin-left: 10px;
+}
+
+.wfm-accordion-item button[aria-expanded="true"] .wfm-accordion-icon {
+    transform: rotate(-135deg);
+}
+
+.wfm-accordion-content {
+    display: none;
+    background: #f9f9f9;
+}
+
+.wfm-accordion-content[hidden] {
+    display: none;
+}
+
+.wfm-accordion-inner {
+    padding: 20px;
+    line-height: 1.6;
+    color: #444;
+}
